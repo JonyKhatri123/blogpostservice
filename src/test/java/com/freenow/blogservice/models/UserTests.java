@@ -23,7 +23,23 @@ public class UserTests {
         Assertions.assertAll(
                 ()->assertNotNull(user),
                 ()->assertEquals(user.username,"Bret"),
-                ()->assertEquals(user.id,1)
+                ()->assertEquals(user.id,1),
+                ()->assertNotNull(user.getAddress()),
+                ()->assertNotNull(user.getCompany()),
+                ()->assertNotNull(user.getEmail()),
+                ()->assertNotNull(user.getWebsite()),
+                ()->assertNotNull(user.getName()),
+                ()->assertNotNull(user.getPhone()),
+                ()->assertNotNull(user.getAddress().getCity()),
+                ()->assertNotNull(user.getAddress().getStreet()),
+                ()->assertNotNull(user.getAddress().getSuite()),
+                ()->assertNotNull(user.getAddress().getZipcode()),
+                ()->assertNotNull(user.getAddress().getGeo().getLat()),
+                ()->assertNotNull(user.getAddress().getGeo().getLng()),
+                ()->assertNotNull(user.getCompany().getBs()),
+                ()->assertNotNull(user.getCompany().getCatchPhrase()),
+                ()->assertNotNull(user.getCompany().getName())
+
         );
     }
 
