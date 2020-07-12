@@ -19,13 +19,13 @@ public class UserSearchService {
 
     public static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
 
-    private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private RestTemplateBuilder restTemplateBuilder;
 
     public List<User> findAllUsers() {
-        LOGGER.info("Finding all users");
+        logger.info("Finding all users");
         RestTemplate restTemplate = createRestTemplate();
         return Arrays.asList(restTemplate
                 .getForEntity("/users", User[].class)
@@ -40,13 +40,13 @@ public class UserSearchService {
     }
 
     public Optional<User> findUserByUserName(String userName) {
-        LOGGER.info("Finding user by user name");
+        logger.info("Finding user by user name");
         Optional<User> optionalUser = findAllUsers().stream()
                 .filter(user -> user.getUsername().equalsIgnoreCase(userName))
                 .findFirst();
         if(!optionalUser.isPresent()) {
             new UserNotFoundException();
-            LOGGER.error("ERROR: User Not Found {} ", userName);
+            logger.error("ERROR: User Not Found {} ", userName);
         }
         return optionalUser;
     }
@@ -56,6 +56,7 @@ public class UserSearchService {
         if(optionalUser.isPresent()) {
             return optionalUser.get().getId();
         }
+        logger.warn("User Id is not found for user name {} ", userName);
         return -1L;
     }
 }
