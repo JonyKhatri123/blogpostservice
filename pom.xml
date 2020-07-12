@@ -18,6 +18,7 @@
 		<java.version>8</java.version>
 		<io-rest-assured.version>3.1.0</io-rest-assured.version>
 		<apache-common-validator.version>1.6</apache-common-validator.version>
+		<swagger.version>2.9.2</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -78,6 +79,16 @@
 			<version>${apache-common-validator.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
 
 	</dependencies>
 
