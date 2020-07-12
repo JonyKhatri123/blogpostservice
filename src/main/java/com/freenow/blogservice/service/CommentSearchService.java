@@ -5,6 +5,7 @@ import com.freenow.blogservice.models.Comment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,7 +21,8 @@ import static java.util.stream.Collectors.toList;
 @Service
 public class CommentSearchService {
 
-    public static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
+    @Value("${freenow.blogpost.api.baseurl}")
+    public String BASE_URL;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
