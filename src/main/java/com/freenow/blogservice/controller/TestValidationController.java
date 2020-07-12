@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController("/blogpost")
+@RestController
 public class TestValidationController {
 
     @Autowired
     private TestValidationService testValidationService;
 
-    @GetMapping("/comments/validation/{userName}")
+    @GetMapping("/validation/{userName}")
     public ResponseEntity findInvalidEmailsForUserPost(
             @NotNull @PathVariable("userName") String userName){
            return new ResponseEntity<>(testValidationService.findInvalidEmails(userName), HttpStatus.OK);
